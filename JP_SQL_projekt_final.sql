@@ -24,6 +24,17 @@ WHERE value_type_code = "5958"
 GROUP BY payroll_year, industry_branch_code
 ORDER BY industry_branch_code, payroll_year;
 
+#dotazy k prozkoumání datasetů navázaných na czechia_price
+
+SELECT *
+FROM czechia_price cp;
+
+SELECT *
+FROM czechia_price_category cpc;
+
+SELECT *
+FROM czechia_region cr;
+
 #pomocná tabulka 2
 SELECT *
 FROM czechia_price cpr
