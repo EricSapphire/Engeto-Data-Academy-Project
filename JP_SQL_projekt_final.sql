@@ -88,7 +88,7 @@ GROUP BY industry_branch_code, payroll_year) t2
 ON t.industry_branch_code = t2.industry_branch_code
 AND t.payroll_year = t2.payroll_year + 1
 WHERE round ((t.salary - t2.salary) / t2.salary * 100, 2) < 0
-ORDER BY payroll_year ASC;
+ORDER BY t.industry_branch_code, payroll_year ASC;
 
 #množství mléka a chleba z mzdu v daném roce
 SELECT payroll_year, name, floor(avg(average_salary/value))
