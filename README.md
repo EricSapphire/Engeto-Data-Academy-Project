@@ -93,7 +93,7 @@ Vzhledem k tomu, že údaje o meziroční změně mezd a cen jsme vymezili do sa
 https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L240-L251
 Po provedení dotazu získáme následující tabulku:
 | rok | ceny | mzdy | HDP |
-| --- | ---- | ---- | --- |
+|:--- |:---- |:---- |:--- |
 2007	6.35	6.84	5.57
 2008	6.41	7.87	2.69
 2009	-6.81	3.16	-4.66
