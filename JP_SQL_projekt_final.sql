@@ -206,7 +206,7 @@ JOIN (
 	ON s.payroll_year = s2.payroll_year + 1
 	) AS slrs;
 
-#pokus s union
+#vytvoření náhledů VIEW
 CREATE VIEW v_jan_prudek_prices_growth AS
 WITH food_prices AS (
   SELECT payroll_year, AVG(value) AS avg_price
