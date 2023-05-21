@@ -56,6 +56,15 @@ V tomto úkolu je problém v tom, že se dotazuje na první a poslední srovnate
 
 **3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?*
 
+I tato otázka míří na porovnání růstu cen, je tedy opět potřeba porovnat primární tabulku samu se sebou, abychom mohli vypočítat meziroční zvýšení. Pomocí vnořeného SELECT propojíme primární tabulku samu se sebou, seskupenou podle jména a sledovaného roku. Z hodnot vypočítáme průměr a seskupíme podle jména. Nakonec výsledek seřadíme, přičemž tabulka je automaticky seřazena vzestupně, což znamená, že první potraviny ve výsledné tabulce mají nejmenší průměrný meziroční nárůst a zdražují tak nejpomaleji.
+https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/c1ec429e2efbf74b78c1e2b647fdcf4334d00d24/JP_SQL_projekt_final.sql#L117-L127
+
+Jedná se o:
+Banány žluté	0.194545
+Jakostní víno bílé	0.23
+Cukr krystalový	0.458182
+...
+
 **4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?**
  
  **5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo násdujícím roce výraznějším růstem?**
