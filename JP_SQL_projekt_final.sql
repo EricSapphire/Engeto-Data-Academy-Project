@@ -1,3 +1,6 @@
+reálné jméno: Honza
+na Discordu: EricSapphire
+
 #dotazy k prozkoumání datasetů
 SELECT *
 FROM czechia_payroll_industry_branch cpib;
