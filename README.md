@@ -51,7 +51,7 @@ Pokud provedeme celý kód (https://github.com/EricSapphire/Engeto-Data-Academy-
 V tomto úkolu je problém v tom, že se dotazuje na první a poslední srovnatelné období. Konkrétní roky nás v tuto chvíli nezajímají, ty zjistíme pomocí klauzulí MAX a MIN. Pro zjištění si předpřipravíme dvě tabulky, jednu pro zjištění množství potravin v prvním a druhou pro zjištění množství potravin v posledním sledovaném roce. Tabulky budou mít více méně stejnou strukturu. vybereme si rok a jméno potraviny a vyvoříme si sloupec s výpočtem množství dané potravinyy, kterou si můžeme koupit za mnzdu v daném sledovaném období. Pomocí klauzule WEHRE výsledky omezíme jen na první (v první tabulce) a poslední (v druhé tabulce) sledované období a na data obsahující ve sloupci name "mléko" a "chléb". Obě tyto tabulky poté spojíme pomocí klauzule UNION (https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/ef83a972b676418afd9fe235d1a0bfdc004b7143/JP_SQL_projekt_final.sql#L94-L105), čímž získáme následující výsledek:
 
  | rok | potravina | množství |
- | :---- | :---- | : --- |
+ | :---- | :---- | :--- |
  | 2006 | Chléb konzumní kmínový | 1294.0 |
  | 2006 | Mléko polotučné pasterované | 1437.0 |
  | 2018 | Mléko polotučné pasterované | 1642.0 |
@@ -73,7 +73,9 @@ Jedná se o:
 
 **4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?**
  
+ V prvním kroku k zodpovězení otázky si vytvoříme dvě "imaginární" tabulky pomocí CTE, jednu, která spočítá průměrný růst cen za jednotlivé roky https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L185-L188 a druhou která spočítá průměrný růst mezd za jednotlivé roky https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L185-L188
  
+ V druhé fázi musíme vypočtat každoroční změnu v obou měřených skupinách, výše vytvořené imaginární tabulky, které jsme vytvořili pomocí klauzule WITH, tak spojíme samy se sebou a pomocí již několikrát použitého vzorce vypočítáme jejich každoroční změnu. Tabulky se změnou cen a změnou mezd následně spojíme 
  
  **5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo násdujícím roce výraznějším růstem?**
 
