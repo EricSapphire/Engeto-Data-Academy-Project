@@ -9,6 +9,7 @@ Zadání:
     4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?  
     5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo násdujícím roce výraznějším růstem?  
     6. Jako dodatečný materiál připravte i tabulku s HDP, GINI koeficientem a populací dalších evropských států ve stejném období, jako primární přehled pro ČR.  
+    
 **0. Příprava datových podkladů pro další dotazování**  
 *A) czechia_payroll*  
 Nejdříve je dobré seznámit se obsahem datových sad, se kterými máme pracovat.  
