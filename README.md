@@ -1,5 +1,5 @@
 # Engeto-Data-Academy-Project
-reálné jméno: Honza-
+reálné jméno: Honza  
 na Discordu: EricSapphire
 
 Zadání:
