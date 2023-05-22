@@ -1,5 +1,5 @@
-reálné jméno: Honza
-na Discordu: EricSapphire
+/*reálné jméno: Honza
+na Discordu: EricSapphire*/
 
 #dotazy k prozkoumání datasetů
 SELECT *
