@@ -2,20 +2,20 @@
 reálné jméno: Honza  
 na Discordu: EricSapphire
 
-Zadání:
-    1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
-    2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?
-    3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
-    4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
-    5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo násdujícím roce výraznějším růstem?
-    6. Jako dodatečný materiál připravte i tabulku s HDP, GINI koeficientem a populací dalších evropských států ve stejném období, jako primární přehled pro ČR.
-**0. Příprava datových podkladů pro další dotazování**
-* *A) czechia_payroll* *
-Nejdříve je dobré seznámit se obsahem datových sad, se kterými máme pracovat.
-Co se týče číselníků pro czechia_payroll, pomocí jednoduchých dotazů zjistíme:
-- z číselníku czechia_payroll_industry_branch https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L2-L3 zjistíme, že zkoumáme celkem 19 odvětví. Vzhledem k tomu, že v hlavní tabulce czechia_payroll jsou odvětví označena jen písmeny, je pro nás tento číselník důležitý pro lepší orientaci ve výsledcích;
-- z číselníku czechia_payroll_calculation https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L5C9-L6 zjistíme, že kalkulace mzdy může nabývat hodnot fyzický nebo přepočtený, pro náš případ se tak nebude jednat o důležitou tabulku
-- z číselníku czechia_payroll_unit https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L8-L9 zjistíme, že číselné hodnoty mohou nabývat jednotek v tisících obyvatel nebo v Kč, tato informace je pro nás důležitá tehdy, když budeme potřebovat rozlišit mezi počtem osob a peněžními kalkulacemi;
+Zadání:  
+    1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?  
+    2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?  
+    3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?  
+    4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?  
+    5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo násdujícím roce výraznějším růstem?  
+    6. Jako dodatečný materiál připravte i tabulku s HDP, GINI koeficientem a populací dalších evropských států ve stejném období, jako primární přehled pro ČR.  
+**0. Příprava datových podkladů pro další dotazování**  
+*A) czechia_payroll*  
+Nejdříve je dobré seznámit se obsahem datových sad, se kterými máme pracovat.  
+Co se týče číselníků pro czechia_payroll, pomocí jednoduchých dotazů zjistíme:  
+- z číselníku czechia_payroll_industry_branch https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L2-L3 zjistíme, že zkoumáme celkem 19 odvětví. Vzhledem k tomu, že v hlavní tabulce czechia_payroll jsou odvětví označena jen písmeny, je pro nás tento číselník důležitý pro lepší orientaci ve výsledcích;  
+- z číselníku czechia_payroll_calculation https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L5C9-L6 zjistíme, že kalkulace mzdy může nabývat hodnot fyzický nebo přepočtený, pro náš případ se tak nebude jednat o důležitou tabulku;  
+- z číselníku czechia_payroll_unit https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L8-L9 zjistíme, že číselné hodnoty mohou nabývat jednotek v tisících obyvatel nebo v Kč, tato informace je pro nás důležitá tehdy, když budeme potřebovat rozlišit mezi počtem osob a peněžními kalkulacemi;  
 - číselník czechia_payroll_value_type https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L11-L12 má podobnou funkci jako předchozí číselník, kdy hodnoty mohou znamenat průměrný počet zaměstnaných osob nebo průměrnou mzdu na zaměstnance. Pro nás bude zásadní hodnota vždy ta, které odpovídá zadání otázky, pokud se například budeme ptát na vývoj mezd, tak vezmeme v potaz průměrnou mzdu;
 
 Když prozkoumáme naši hlavní tabulku czechia_payroll, zjistíme, že obsahuje celkem 6 880 záznamů, kde hlavním klíčem je ID. Na první pohled vidíme, že spousta
@@ -29,18 +29,18 @@ Nakonec si tak můžeme vytvořit pomocnou tabulku https://github.com/EricSapphi
 Stejně můžeme postupovat i s naší další relevantní tabulkou czechia_price, která nám ukazuje vývoj cen.
 
 Pří prozkoumání tabulky czechia_price https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/8ab7ad808da62f54b4d7b7885e3a353897505797/JP_SQL_projekt_final.sql#L29-L30 zjistíme, že obsahuje následující sloupce: ID (jako hlavní klíč), value, category_code, date_from, date_to, region_code.
-Při prozkoumání číselníků zjistíme, že:
-- z číselníku czechia_price_category https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/8ab7ad808da62f54b4d7b7885e3a353897505797/JP_SQL_projekt_final.sql#L32-L33 vyplývá, co se skrývá pod kódy v primární tabulce czechia_price ve sloupci category_code: Každý kód má přiřazen nějakou potravinu v určitém zkoumaném jednotkovém množství, např. kód 111101 značí 1kg loupané rýže, kód 114401 značí 150g netučného bílého jogurtu apod.;
+Při prozkoumání číselníků zjistíme, že:  
+- z číselníku czechia_price_category https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/8ab7ad808da62f54b4d7b7885e3a353897505797/JP_SQL_projekt_final.sql#L32-L33 vyplývá, co se skrývá pod kódy v primární tabulce czechia_price ve sloupci category_code: Každý kód má přiřazen nějakou potravinu v určitém zkoumaném jednotkovém množství, např. kód 111101 značí 1kg loupané rýže, kód 114401 značí 150g netučného bílého jogurtu apod.;  
 - z číselníku czechia_region https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/8ab7ad808da62f54b4d7b7885e3a353897505797/JP_SQL_projekt_final.sql#L35-L36 zjistíme kódy jednotlivých krajů podle NUTS. Tyto údaje se nachází v primární tabulce czechia_price ve sloupci region_code. Vzhledem k tomu, že žádná z kladenývh otázek nemíří na konkrétní region, jsou využívány údaje celorepublikové a i proto tento číselník v pro nás bude mít spíše marginální význam.
 
 Nakonec i pro mzdy si můžeme vytvořit pomocnou tabulku, která bude obsahovat jen pro naše zkoumání relevantní údaje https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/8ab7ad808da62f54b4d7b7885e3a353897505797/JP_SQL_projekt_final.sql#L39-L43. Vytvoříme tak tabulku, která obsahuje všechny sloupce z tabulky czechia_price a czechia_price_category. Tyto tabulky vzájemně spojíme na hodnotách sloupce obsahující kódy kategorií potravin. Pomocí klauzule WHERE si vyfiltrujeme dotazy, které ve sloupci region_code obsahují jen nulitní hodnoty, protože se nechceme zaměřovat na konkrétní region.
 
-* *C) vytvoření primární tabulky t_jan_prudek_project_sql_primary_final* *
+*C) vytvoření primární tabulky t_jan_prudek_project_sql_primary_final*  
 Nyní můžeme přistoupit k vytvoření primární tabulky, která bude obsahovat všechna data k zodpovězení všech následujících otázek. Již v předchozích dotazech jsme vytvořili náhledy z tabulky czechia_payroll a czechia_price tak, že obsahovaly všechna relevantní data, respektive nerelevantní data byla vynechána. Tyto dva dotazy tak nyní musíme spojit v jeden, který vytvoří kýženou tabulku t_jan_prudek_project_sql_primary_final https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/8ab7ad808da62f54b4d7b7885e3a353897505797/JP_SQL_projekt_final.sql#L46-L64
 
 Vzali jsme tedy pomocnou tabulku vytvořenou z czechia_payroll a pomcocnou tabulku vytvořenou z czechia_price, pomocí vnořených SELECT jsme je spojili na sloupci "year" a pomocí klauzule CREATE TABLE jsme vytvořili tabulku t_jan_prudek_project_sql_primary_final.
 
-**1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?**
+**1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?**  
 Nyní se tak můžeme vrhnout na zodpovězení jednotlivých otázek. Otázka č.1 míří vývoj mezd v odvětvích za neurčené časové období.
 
 Musíme sledovat meziroční změny u jednotlivých průmyslových odvětví. Vzhledem k tomu, že tabulka nám meziroční změnu neukazuje, musíme si náhled meziročních změn vytvořit sami pomocí spojení tabulky samé se sebou. Pomocí klauzule JOIN tak spojíme primární tabulku samu se sebou na sloupcích industry_branch_code a year, kdy ale year první tabulky se rovná year + 1 druhé tabulky https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/8ab7ad808da62f54b4d7b7885e3a353897505797/JP_SQL_projekt_final.sql#L86-L89.
@@ -79,14 +79,14 @@ Jedná se o:
  * *A) Vytvoření náhledů* *
 V prvé řadě je nejjednoduší vytvoření si dvou náhledů, které zajistí informaci ohledně růstu mezd a cen, aby nenastal případný konflikt ve jménech sloupců, pokud by byl vytvořen jeden komplexní dotaz. Oba náhledy mají stejnou strukturu. S užitím Common Table Expression si "předvytvoříme" dočasnou tabulku s průměrnou mzdou a cenou seskupenou podle roku. Pomocí těchto náhledů poté s pomocí vzájemného spojení přes sloupec year vypočítáme meziroční nárůst mez a cen.
 
-Výsledný dotaz vypadá následovně pro
+Výsledný dotaz vypadá následovně pro  
 i. ceny potravin
 https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L210-L217
 
 ii. pro mzdy
 https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L219-L226
 
-* *B) Výsledný dotaz* *
+*B) Výsledný dotaz*  
 Vzhledem k tomu, že již máme údaje o meziročním růstu cen a meziročním růstu mezd separátně, musíme jen zjistit, zda existuje rok, kdy je růst cen vyšší než růst mezd. Toho docílíme prostým odečtením růstu mezd za daný rok od růstu cen. Pokud je výsledek větší než 10 %, což je podle zadání výrazně vyšší růst, dostaneme odpověď na zadanou otázku.
 https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L228-L232
 Pokud provedeme daný dotaz, nedostaneme žádný výsledek, tudíž v žádném roce sledovaném nerostly ceny výrazně víc než mzdy.
@@ -95,13 +95,13 @@ Pokud provedeme daný dotaz, nedostaneme žádný výsledek, tudíž v žádném
 
 Zde je zásadní mít již vytvořenou tabulku s makroekonomickými údaji států, jejíž vytvoření je podrobněji popsáno níže v úkolu č. 6. Zde je úkol náročný v tom, že musíme propojit několik tabulek za účelem zjištění meziročního nárůstu dané zkoumané hodnoty (ostatně jako v úkolu č. 4). Nejjednodušší v tomto případě bylo nejít cestou jednoho komplexního dotazu, ale rozdělit si dotazy na vícero a následně je spojit v jeden výsledný dotaz.
 
-K tomu využijeme již vytvořených náhledů z úkolu č. 5, protože ty nám dávají průměrný růst mezd a cen za daný rok. Je nutné zjištit meziroční nárůst HDP v ČR a výsledky následně porovnat. Tohoto dosáhneme opět pomocí propojení sekundární tabulky samé se sebou. V rámci SELECT klauzule vypočítáme i meziroční růst HDP. Výsledky si vyfiltrujeme pouze na Českou republiku u obou propojených tabulek.
-Výsledný dotaz vypadá následovně:
+K tomu využijeme již vytvořených náhledů z úkolu č. 5, protože ty nám dávají průměrný růst mezd a cen za daný rok. Je nutné zjištit meziroční nárůst HDP v ČR a výsledky následně porovnat. Tohoto dosáhneme opět pomocí propojení sekundární tabulky samé se sebou. V rámci SELECT klauzule vypočítáme i meziroční růst HDP. Výsledky si vyfiltrujeme pouze na Českou republiku u obou propojených tabulek.  
+Výsledný dotaz vypadá následovně:  
 https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L234-L238
 
-Vzhledem k tomu, že údaje o meziroční změně mezd a cen jsme vymezili do samostatného náhledu a meziroční růst HDP jsme si předepsali, výsledný dotaz bude jednodušší. Nyní jen musíme všechny předešlé dotazy spojit do jednoho dotazu, abychom získali výsledek. Pomocí vnořeného SELECT spojíme oba vytvořené náhledy do jedné tabulky na roku a tuto výslednou tabulku následně propojíme s tabulkou růstu HDP v ČR, kterou jsme se předpřipravili výše. Tabulky spojíme opět na rocích.
-https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L240-L251
-Po provedení dotazu získáme následující tabulku:
+Vzhledem k tomu, že údaje o meziroční změně mezd a cen jsme vymezili do samostatného náhledu a meziroční růst HDP jsme si předepsali, výsledný dotaz bude jednodušší. Nyní jen musíme všechny předešlé dotazy spojit do jednoho dotazu, abychom získali výsledek. Pomocí vnořeného SELECT spojíme oba vytvořené náhledy do jedné tabulky na roku a tuto výslednou tabulku následně propojíme s tabulkou růstu HDP v ČR, kterou jsme se předpřipravili výše. Tabulky spojíme opět na rocích.  
+https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L240-L251  
+Po provedení dotazu získáme následující tabulku:  
 
  | rok | ceny | mzdy | HDP |
  | :--- | :---- |:---- |:--- |
