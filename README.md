@@ -50,6 +50,8 @@ Pokud provedeme celý kód (https://github.com/EricSapphire/Engeto-Data-Academy-
  
 V tomto úkolu je problém v tom, že se dotazuje na první a poslední srovnatelné období. Konkrétní roky nás v tuto chvíli nezajímají, ty zjistíme pomocí klauzulí MAX a MIN. Pro zjištění si předpřipravíme dvě tabulky, jednu pro zjištění množství potravin v prvním a druhou pro zjištění množství potravin v posledním sledovaném roce. Tabulky budou mít více méně stejnou strukturu. vybereme si rok a jméno potraviny a vyvoříme si sloupec s výpočtem množství dané potravinyy, kterou si můžeme koupit za mnzdu v daném sledovaném období. Pomocí klauzule WEHRE výsledky omezíme jen na první (v první tabulce) a poslední (v druhé tabulce) sledované období a na data obsahující ve sloupci name "mléko" a "chléb". Obě tyto tabulky poté spojíme pomocí klauzule UNION (https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/ef83a972b676418afd9fe235d1a0bfdc004b7143/JP_SQL_projekt_final.sql#L94-L105), čímž získáme následující výsledek:
 
+ | rok | potravina | množství |
+ | ---- | ---- |
  | 2006 | Chléb konzumní kmínový | 1294.0 |
  | 2006 | Mléko polotučné pasterované | 1437.0 |
  | 2018 | Mléko polotučné pasterované | 1642.0 |
@@ -62,10 +64,12 @@ https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/c1ec429e2efbf74
 
 Jedná se o:
 
+ | potravina| průměrná změna ceny |
+ | ----| ---- |
  | Banány žluté | 0.194545 |
  | Jakostní víno bílé | 0.23 |
  | Cukr krystalový | 0.458182 |
- | ... | |
+ | ... | ... |
 
 **4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?**
  
