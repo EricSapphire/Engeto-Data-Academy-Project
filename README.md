@@ -1,5 +1,5 @@
 # Engeto-Data-Academy-Project
-reálné jméno: Honza
+reálné jméno: Honza-
 na Discordu: EricSapphire
 
 Zadání:
@@ -13,7 +13,7 @@ Zadání:
 * *A) czechia_payroll* *
 Nejdříve je dobré seznámit se obsahem datových sad, se kterými máme pracovat.
 Co se týče číselníků pro czechia_payroll, pomocí jednoduchých dotazů zjistíme:
-- z číselníku czechia_payroll_industry_branch (https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L2-L3 zjistíme, že zkoumáme celkem 19 odvětví. Vzhledem k tomu, že v hlavní tabulce czechia_payroll jsou odvětví označena jen písmeny, je pro nás tento číselník důležitý pro lepší orientaci ve výsledcích;
+- z číselníku czechia_payroll_industry_branch https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L2-L3 zjistíme, že zkoumáme celkem 19 odvětví. Vzhledem k tomu, že v hlavní tabulce czechia_payroll jsou odvětví označena jen písmeny, je pro nás tento číselník důležitý pro lepší orientaci ve výsledcích;
 - z číselníku czechia_payroll_calculation https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L5C9-L6 zjistíme, že kalkulace mzdy může nabývat hodnot fyzický nebo přepočtený, pro náš případ se tak nebude jednat o důležitou tabulku
 - z číselníku czechia_payroll_unit https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L8-L9 zjistíme, že číselné hodnoty mohou nabývat jednotek v tisících obyvatel nebo v Kč, tato informace je pro nás důležitá tehdy, když budeme potřebovat rozlišit mezi počtem osob a peněžními kalkulacemi;
 - číselník czechia_payroll_value_type https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/301eed27a42bbb71925206d208d5e255745d4c3d/JP_SQL_projekt_final.sql#L11-L12 má podobnou funkci jako předchozí číselník, kdy hodnoty mohou znamenat průměrný počet zaměstnaných osob nebo průměrnou mzdu na zaměstnance. Pro nás bude zásadní hodnota vždy ta, které odpovídá zadání otázky, pokud se například budeme ptát na vývoj mezd, tak vezmeme v potaz průměrnou mzdu;
