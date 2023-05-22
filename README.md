@@ -92,9 +92,11 @@ https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1
 Vzhledem k tomu, že údaje o meziroční změně mezd a cen jsme vymezili do samostatného náhledu a meziroční růst HDP jsme si předepsali, výsledný dotaz bude jednodušší. Nyní jen musíme všechny předešlé dotazy spojit do jednoho dotazu, abychom získali výsledek. Pomocí vnořeného SELECT spojíme oba vytvořené náhledy do jedné tabulky na roku a tuto výslednou tabulku následně propojíme s tabulkou růstu HDP v ČR, kterou jsme se předpčipravili v bodu B). Tabulky spojíme opět na rocích.
 https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/a58e2ce6de29cc1c5d26b29c26db0b60e71a3066/JP_SQL_projekt_final.sql#L240-L251
 Po provedení dotazu získáme následující tabulku:
+
  | rok | ceny | mzdy | HDP |
- |:--- |:---- |:---- |:--- |
-2007	6.35	6.84	5.57
+ | :--- | :---- |:---- |:--- |
+ | 2007 | 6.35 | 6.84 | 5.57 |
+ 
 2008	6.41	7.87	2.69
 2009	-6.81	3.16	-4.66
 2010	1.77	1.95	2.43
