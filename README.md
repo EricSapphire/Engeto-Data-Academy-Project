@@ -64,8 +64,8 @@ https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/c1ec429e2efbf74
 
 Jedná se o:
 
- | potravina| průměrná změna ceny |
- | ----| ---- |
+ | potravina | průměrná změna ceny |
+ | :----| :---- |
  | Banány žluté | 0.194545 |
  | Jakostní víno bílé | 0.23 |
  | Cukr krystalový | 0.458182 |
