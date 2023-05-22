@@ -1,4 +1,7 @@
 # Engeto-Data-Academy-Project
+reálné jméno: Honza
+na Discordu: EricSapphire
+
 Zadání:
     1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
     2. Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?
