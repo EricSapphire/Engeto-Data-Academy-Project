@@ -77,6 +77,8 @@ Jedná se o:
  | Cukr krystalový | 0.458182 |
  | ... | ... |
 
+Pokud máme zodpovědět na položenou otázku, která potravina zdražuje nejpomaleji, jedná se o banány.
+
 **4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?**
  
 *A) Vytvoření náhledů*
@@ -98,7 +100,7 @@ Pokud provedeme daný dotaz, nedostaneme žádný výsledek, tudíž v žádném
 
 Zde je zásadní mít již vytvořenou tabulku s makroekonomickými údaji států, jejíž vytvoření je podrobněji popsáno níže v úkolu č. 6. Zde je úkol náročný v tom, že musíme propojit několik tabulek za účelem zjištění meziročního nárůstu dané zkoumané hodnoty (ostatně jako v úkolu č. 4). Nejjednodušší v tomto případě bylo nejít cestou jednoho komplexního dotazu, ale rozdělit si dotazy na vícero a následně je spojit v jeden výsledný dotaz.
 
-K tomu využijeme již vytvořených náhledů z úkolu č. 5, protože ty nám dávají průměrný růst mezd a cen za daný rok. Je nutné zjištit meziroční nárůst HDP v ČR a výsledky následně porovnat. Tohoto dosáhneme opět pomocí propojení sekundární tabulky samé se sebou. V rámci SELECT klauzule vypočítáme i meziroční růst HDP. Výsledky si vyfiltrujeme pouze na Českou republiku u obou propojených tabulek.  
+K tomu využijeme již vytvořených náhledů z úkolu č. 5, protože ty nám dávají průměrný růst mezd a cen za daný rok. Je nutné zjistit meziroční nárůst HDP v ČR a výsledky následně porovnat. Tohoto dosáhneme opět pomocí propojení sekundární tabulky samé se sebou. V rámci SELECT klauzule vypočítáme i meziroční růst HDP. Výsledky si vyfiltrujeme pouze na Českou republiku u obou propojených tabulek.  
 Výsledný dotaz vypadá následovně:
 
 https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/0ebe2d5e12affe93d844f0c0ef767dc46382cae4/5.%20Vliv%20HDP%20na%20zmenu%20cen%20a%20mezd%20v%20CR.sql#L21-L25
@@ -124,12 +126,16 @@ Po provedení dotazu získáme následující tabulku:
  | 2017	| 9.98 | 6.28 | 5.17 |
  | 2018	| 1.95 | 7.62 | 3.2 |
 
-Můžeme tak vysledovat jistou korelaci mezi výší HDP a cenami potravin či mezd. V roce 2007 dosáhlo HDP přes pět procent a mzdy ve stejném a následujícím roce rostly o nominálně procento až dvě více než HDP. V krizových letech 2008 - 2014, s důrazem na vrchol finanční krize 2009, byl růst HDP pomalejší, respektive v roce 2009 byl dokonce výrazně v mínusu. Mzdy odpovídaly chabému ekonomickému výkonu a rostly jen neznatelně.  
+Můžeme tak vysledovat jistou korelaci mezi výší HDP a cenami potravin či mezd v něktrých letech. V roce 2007 dosáhlo HDP přes pět procent a mzdy ve stejném a následujícím roce rostly o nominálně procento až dvě více než HDP. V krizových letech 2008 - 2014, s důrazem na vrchol finanční krize 2009, byl růst HDP pomalejší, respektive v roce 2009 byl dokonce výrazně v mínusu. Mzdy odpovídaly chabému ekonomickému výkonu a rostly jen neznatelně.
+
+Nemůžeme však dojít k závěru, že HDP má jednoznačně vliv na výši mezd a cen, protože nalezneme i léta, například rok 2015, kdy HDP dosáhlo míry přes 5 %, avšak ceny v témže i následujícím roce klesly a mzdy rostly o poznání pomaleji. Navíc nelze z výsledků vyčíst pravidelnost, jsou léta, kdy HDP klesá nebo roste jen pozvolna, avšak ceny rostou značně (např. rok 2012), jindy je trend opačný (již zmíněný rok 2015) a jindy výsledky korelují (např. rok 2010).
+
+Pokud máme odpovědět na položenou otázku, pak ne, výše růstu HDP nemá jednoznačný vliv na změny ve mzdách a cenách potravin.
 
 **6. Jako dodatečný materiál připravte i tabulku s HDP, GINI koeficientem a populací dalších evropských států ve stejném období, jako primární přehled pro ČR.**
 
 Ač je tento úkol zadán jako dodatečný, je potřeba jej splnit již před zodpovězením na ozázku č. 5, proto je vytvořen již v souboru s pořadovým číslem 0., který se zabývá prozkoumáním jednotlivých datasetů a přípravě primární a sekundární tabulky:
 
-https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/0ebe2d5e12affe93d844f0c0ef767dc46382cae4/0.%20Priprava%20datasetu%20a%20vychozich%20tabulek.sql#L70C1-L79C3
+https://github.com/EricSapphire/Engeto-Data-Academy-Project/blob/c23faddbe476f4c3ac8a672d297ba5dc9ec662f0/0.%20Priprava%20datasetu%20a%20vychozich%20tabulek.sql#L70-L79
 
 Použitý kód vytvoří tabulku, která vznikne spojením tabulky economies a countries, o pěti sloupcích - country, gdp, gini, year, continent. Společným kličem obou spojovaných tabulek je sloupec country v každé z nich. Pomocí klauzule WHERE si vyfiltrujeme pouze země, které se nacházejí v Evropě. Vzhledem k tomu, že nás zajímá jen období stejné jako primární přehled pro ČR, který zaobírá období 2000 - 2021, pomocí klauzule HAVING omezíme výsledky na ty, které ve sloupci e.'year' obsahují hodnotu vyšší než "1999". Aby byla tabulka pěkně přehledná, seřadíme si data podle zemí a roku.
